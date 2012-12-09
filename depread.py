@@ -189,8 +189,6 @@ def parse_file ( filename ) :
     output['processes'][key] = processes[key].json()
   print json.dumps(output, indent=4)
 
-  # print "Commands: %s" % str(list(set(commands)))
-
 if __name__ == '__main__' :
   if len(sys.argv) != 2 :
     print 'Usage:', sys.argv[0], 'input-file'
