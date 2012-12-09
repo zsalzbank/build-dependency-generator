@@ -66,6 +66,8 @@
                     <h2>Parent</h2>
                     <h3><a href="#"></a></h3>
                     <h4></h4>
+                    <h6><a href="#">Arguments</a></h6>
+                    <span class="args"></span>
                     <h6>Reads</h6>
                     <ul id="reads" class="unstyled"></ul>
                     <h6>Writes</h6>
@@ -75,6 +77,8 @@
                     <h2>Process</h2>
                     <h3><a href="#"></a></h3>
                     <h4></h4>
+                    <h6><a href="#">Arguments</a></h6>
+                    <span class="args"></span>
                     <h6>Reads</h6>
                     <ul id="reads" class="unstyled"></ul>
                     <h6>Writes</h6>
@@ -107,7 +111,6 @@
             var timer = 0;
             return function(callback, ms){
               clearTimeout (timer);
-              console.log("cleared");
               timer = setTimeout(callback, ms);
             };
           })();
@@ -116,7 +119,6 @@
             $("#search-text").keyup(function() {
                 delay(function() {
                   search();
-                  console.log("run search");
                 }, 200);
             });
             $("#sp").click(function() {
@@ -230,6 +232,9 @@
 
               $(div + " h3 a").html(id).click(f);
               $(div + " h4").html(p.executable);
+              $(div + " .args").html(p.args.join(" ")).hide().prev().unbind().click(function(){
+                $(this).next().toggle();
+              });
 
               for(var w in p.writes) {
                   var li = $('<li><a href="#"></a></li>');
@@ -257,7 +262,7 @@
                   var li = $('<li><a href="#"></a></li>');
                   li.addClass("label");
                   li.children().html(p.children[c]).click(function() {
-                    loadProcess(p.children[c]);
+                    loadProcess($(this).text(), false);
                   });
                   $("#next-processes ul").append(li);
                 }
