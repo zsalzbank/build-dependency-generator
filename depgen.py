@@ -16,7 +16,7 @@ def lreplace(pattern, sub, string):
 def parse_process ( pid, wd ) :
   global new_procs
 
-  p = data['processes'][pid] 
+  p = data['processes'][str(pid)] 
 
   new_children = []
   for i in range(0, len(p['children'])) :

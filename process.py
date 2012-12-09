@@ -6,6 +6,7 @@ class Process :
     self.executable = ''
     self.pid = pid
     self.fds = {0: '<stdin>', 1: '<stdout>', 2: '<stderr>'}
+    self.args = []
     self.children = []
     self.accesses = []
     self.reads = []
@@ -26,14 +27,12 @@ class Process :
 
     return p
 
+  def add_arg(self, a) :
+    self.args.append(a)
+
   def relevant(self, f) :
     fo = self.getpath(f)
     return fo
-   # print self.pid, '[', self.cwd, ']:', f, '-->', fo
-   # if fo.startswith('/tmp') or fo.startswith(self.cwd) :
-   #   return fo
-   # else :
-   #   return None
 
   def getpath(self, p) :
     if p[0] == '/' :
@@ -98,11 +97,13 @@ class Process :
     obj['children'] = self.children
     obj['reads'] = list(set(self.reads))
     obj['writes'] = list(set(self.writes))
+    obj['args'] = self.args
 
     return obj
 
   def __repr__ (self) :
     rstr = "\n\tExecutable: " + self.executable
+    rstr += "\n\tArgs: " + str(self.args)
     rstr += "\n\tFDs: " + str(self.fds)
     rstr += "\n\tParent: " + str(self.parent)
     rstr += "\n\tChildren: " + str(self.children)
