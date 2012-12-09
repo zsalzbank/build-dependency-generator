@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>DepDisplay</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+        <style>
+            body {
+                padding: 10px;
+            }
+
+            .well {
+                text-align: center;
+            }
+
+            #process h6, #prev-process h6, #next-processes h6 {
+               clear: both; 
+            }
+
+            #search-results li, #file-view li, #process-view li {
+                margin: 2px;
+            }
+
+            #search-results li a, #file-view li a, #process-view li a {
+                color: #fff;
+            }
+        </style>
+    </head>
+    <body>  
+        <div class="navbar navbar-inverse">
+            <div class="navbar-inner">
+                <a class="brand" href="#">DepDisplay</a>
+                <ul class="nav">
+                    <li class="active"><a href="#" id="sp">Process View</a></li>
+                    <li class="hide"><a href="#" id="sf">File View</a></li>
+                </ul>
+                <div class="navbar-search pull-right">
+                    <input id="search-text" type="text" class="search-query" placeholder="File Search">
+                </div>
+            </div>
+        </div>
+        <div id="search-results" class="well hide">
+            <h2>Search Results</h2>
+            <ul class="unstyled"></ul>
+        </div>
+        <div id="file-view" class="hide">
+            <div class="row-fluid">
+                <div id="writes" class="well span4">
+                    <h2>Dependent On</h2>
+                    <ul class="unstyled"></ul>
+                </div>
+                <div id="file" class="well span4">
+                    <h2>File</h2>
+                    <h3><a href="#"></a></h3>
+                    <h4>Written By: <a href="#"></a></h4>
+                </div>
+                <div id="reads" class="well span4">
+                    <h2>Used By</h2>
+                    <ul class="unstyled"></ul>
+                </div>
+            </div>
+        </div>
+        <div id="process-view">
+            <div class="row-fluid">
+                <div id="prev-process" class="well span4">
+                    <h2>Parent</h2>
+                    <h3><a href="#"></a></h3>
+                    <h4></h4>
+                    <h6>Reads</h6>
+                    <ul id="reads" class="unstyled"></ul>
+                    <h6>Writes</h6>
+                    <ul id="writes" class="unstyled"></ul>
+                </div>
+                <div id="process" class="well span4">
+                    <h2>Process</h2>
+                    <h3><a href="#"></a></h3>
+                    <h4></h4>
+                    <h6>Reads</h6>
+                    <ul id="reads" class="unstyled"></ul>
+                    <h6>Writes</h6>
+                    <ul id="writes" class="unstyled"></ul>
+                </div>
+                <div id="next-processes" class="well span4">
+                    <h2>Children</h2>
+                    <ul class="unstyled"></ul>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+          $.extend({
+            getUrlVars: function(){
+              var vars = [], hash;
+              var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+              for(var i = 0; i < hashes.length; i++)
+              {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+              }
+              return vars;
+            },
+            getUrlVar: function(name){
+              return $.getUrlVars()[name];
+            }
+          });
+          $(document).ready(function() {
+            $.get($.getUrlVar('js'), loadJson);
+            $("#search-text").keyup(search);
+            $("#sp").click(function() {
+                switchView(true);
+            });
+            $("#sf").click(function() {
+                switchView(false);
+            });
+          });
+          var processes = {};
+          var reads = {};
+          var writes = {};
+          var writers = {};
+          var start = null;
+          function search() {
+            var text = $(this).val();
+            var $results = $("#search-results ul");
+            $results.empty();
+
+            if(text == '') {
+              $results.parent().slideUp();
+            } else {
+              $results.parent().slideDown();
+
+              var files = [];
+              for(var f in reads) {
+                if(f.indexOf(text) !== -1 && $.inArray(f, files) === -1) files.push(f);
+              }
+              for(var f in writes) {
+                if(f.indexOf(text) !== -1 && $.inArray(f, files) === -1) files.push(f);
+              }
+
+              for(var f in files) {
+                  var li = $('<li><a href="#"></a></li>');
+                  li.addClass("label");
+                  li.children().html(files[f]).click(function(){
+                    loadFile($(this).text());
+                  });
+                  $results.append(li);
+              }
+            }
+
+            checkEmpty("#search-results ul");
+          }
+          function loadJson(data) {
+            start = data.start;
+            processes = data.processes;
+
+            loadProcess(start, false);
+            for (var p in processes) {
+              for (var w in processes[p].writes) {
+                w = processes[p].writes[w];
+                writers[w] = p;
+
+                if(typeof writes[w] === "undefined") {
+                  writes[w] = []
+                }
+                for (var r in processes[p].reads) {
+                  r = processes[p].reads[r];
+                  writes[w].push(r);
+                }
+              }
+              for (var r in processes[p].reads) {
+                r = processes[p].reads[r];
+                if(typeof reads[r] === "undefined") {
+                  reads[r] = []
+                }
+                for ( var w in processes[p].writes) {
+                  w = processes[p].writes[w];
+                  reads[r].push(w);
+                }
+              }
+            }
+          }
+          function switchView(p) {
+            $("#process-view").toggle(p);
+            $("#file-view").toggle(!p);
+            $("#sp").parent().toggleClass("active", p);
+            $("#sf").parent().toggle(!p).toggleClass("active", !p);
+
+            $("#search-results").slideUp();
+            $("#search-text").val('');
+          }
+          function loadProcess(id, par) {
+            switchView(true);
+
+            var div = (par) ? "#prev-process" : "#process";
+            var p = processes[id];
+
+            $(div + " h3 a").html("").unbind();
+            $(div + " h4").html("").unbind();
+            $(div + " #reads").empty();
+            $(div + " #writes").empty();
+
+            if (typeof p !== "undefined") {
+              var f = function() {
+                  loadProcess(id, false);
+              };
+
+              $(div + " h3 a").html(id).click(f);
+              $(div + " h4").html(p.executable);
+
+              for(var w in p.writes) {
+                  var li = $('<li><a href="#"></a></li>');
+                  li.addClass("label");
+                  li.children().html(p.writes[w]).click(function(){
+                    loadFile($(this).text());
+                  });
+                  $(div + " #writes").append(li);
+              }
+    
+              for(var r in p.reads) {
+                  var li = $('<li><a href="#"></a></li>');
+                  li.addClass("label");
+                  li.children().html(p.reads[r]).click(function(){
+                    loadFile($(this).text());
+                  });
+                  $(div + " #reads").append(li);
+              }
+
+              if(!par) {
+                loadProcess(p.parent, true); 
+
+                $("#next-processes ul").empty();
+                for(var c in p.children) {
+                  var li = $('<li><a href="#"></a></li>');
+                  li.addClass("label");
+                  li.children().html(p.children[c]).click(function() {
+                    loadProcess(p.children[c]);
+                  });
+                  $("#next-processes ul").append(li);
+                }
+              }
+            }
+            checkEmpty(div + " #writes");
+            checkEmpty(div + " #reads");
+            checkEmpty("#next-processes ul");
+          }
+          function loadFile(file) {
+            switchView(false);
+            
+            $("#file-view #writes ul").empty();
+            $("#file-view #reads ul").empty();
+
+            $("#file h3 a").html(file);
+            if(writers[file]) {
+              $("#file h4").show();
+              $("#file h4 a").html(writers[file]).unbind().click(function() {
+                  loadProcess(writers[file]);
+              });
+            } else {
+              $("#file h4").hide();
+            }
+
+            for(var w in writes[file]) {
+                var li = $('<li><a href="#"></a></li>');
+                li.addClass("label");
+                li.children().html(writes[file][w]).click(function(){
+                  loadFile($(this).text());
+                });
+                $("#file-view #writes ul").append(li);
+            }
+    
+            for(var r in reads[file]) {
+                var li = $('<li><a href="#"></a></li>');
+                li.addClass("label");
+                li.children().html(reads[file][r]).click(function(){
+                  loadFile($(this).text());
+                });
+                $("#file-view #reads ul").append(li);
+            }
+
+            checkEmpty("#file-view #writes ul");
+            checkEmpty("#file-view #reads ul");
+          }
+
+         function checkEmpty(div) {
+            if($(div).children().length == 0) {
+                var li = $("<li></li>");
+                li.addClass("label label-info");
+                li.html("None");
+                $(div).append(li);
+            }
+         }
+        </script>
+    </body>
+</html>

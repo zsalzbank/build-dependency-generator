@@ -1,0 +1,1564 @@
+{
+    "start": "4879", 
+    "processes": {
+        "4909": {
+            "parent": "4892", 
+            "executable": "/bin/mv", 
+            "writes": [
+                ".deps/default.Po"
+            ], 
+            "reads": [
+                ".deps/default.Tpo"
+            ], 
+            "children": []
+        }, 
+        "4908": {
+            "parent": "4906", 
+            "executable": "/usr/bin/as", 
+            "writes": [
+                "default.o"
+            ], 
+            "reads": [
+                "default.o", 
+                "/tmp/ccsCuTB0.s"
+            ], 
+            "children": []
+        }, 
+        "4901": {
+            "parent": "4892", 
+            "executable": "/bin/mv", 
+            "writes": [
+                ".deps/arscan.Po"
+            ], 
+            "reads": [
+                ".deps/arscan.Tpo"
+            ], 
+            "children": []
+        }, 
+        "4900": {
+            "parent": "4898", 
+            "executable": "/usr/bin/as", 
+            "writes": [
+                "arscan.o"
+            ], 
+            "reads": [
+                "arscan.o", 
+                "/tmp/ccAjncOm.s"
+            ], 
+            "children": []
+        }, 
+        "4903": {
+            "parent": "4902", 
+            "executable": "/usr/lib/gcc/x86_64-linux-gnu/4.6.1/cc1", 
+            "writes": [
+                "/tmp/ccdZQfCF.s", 
+                ".deps/commands.Tpo"
+            ], 
+            "reads": [
+                "dep.h", 
+                "commands.c", 
+                "config.h", 
+                "commands.h", 
+                "getopt.h", 
+                "hash.h", 
+                "filedef.h", 
+                "variable.h", 
+                "make.h", 
+                "gettext.h", 
+                "job.h"
+            ], 
+            "children": []
+        }, 
+        "4902": {
+            "parent": "4892", 
+            "executable": "/usr/bin/gcc", 
+            "writes": [], 
+            "reads": [], 
+            "children": [
+                "4903", 
+                "4904"
+            ]
+        }, 
+        "4905": {
+            "parent": "4892", 
+            "executable": "/bin/mv", 
+            "writes": [
+                ".deps/commands.Po"
+            ], 
+            "reads": [
+                ".deps/commands.Tpo"
+            ], 
+            "children": []
+        }, 
+        "4904": {
+            "parent": "4902", 
+            "executable": "/usr/bin/as", 
+            "writes": [
+                "commands.o"
+            ], 
+            "reads": [
+                "commands.o", 
+                "/tmp/ccdZQfCF.s"
+            ], 
+            "children": []
+        }, 
+        "4907": {
+            "parent": "4906", 
+            "executable": "/usr/lib/gcc/x86_64-linux-gnu/4.6.1/cc1", 
+            "writes": [
+                ".deps/default.Tpo", 
+                "/tmp/ccsCuTB0.s"
+            ], 
+            "reads": [
+                "dep.h", 
+                "default.c", 
+                "config.h", 
+                "commands.h", 
+                "getopt.h", 
+                "hash.h", 
+                "filedef.h", 
+                "variable.h", 
+                "make.h", 
+                "gettext.h", 
+                "rule.h", 
+                "job.h"
+            ], 
+            "children": []
+        }, 
+        "4906": {
+            "parent": "4892", 
+            "executable": "/usr/bin/gcc", 
+            "writes": [], 
+            "reads": [], 
+            "children": [
+                "4907", 
+                "4908"
+            ]
+        }, 
+        "4981": {
+            "parent": "4892", 
+            "executable": "/bin/mv", 
+            "writes": [
+                ".deps/version.Po"
+            ], 
+            "reads": [
+                ".deps/version.Tpo"
+            ], 
+            "children": []
+        }, 
+        "4980": {
+            "parent": "4978", 
+            "executable": "/usr/bin/as", 
+            "writes": [
+                "version.o"
+            ], 
+            "reads": [
+                "/tmp/ccqtaZQP.s", 
+                "version.o"
+            ], 
+            "children": []
+        }, 
+        "4983": {
+            "parent": "4982", 
+            "executable": "/usr/lib/gcc/x86_64-linux-gnu/4.6.1/cc1", 
+            "writes": [
+                "/tmp/ccCe3uvU.s", 
+                ".deps/vpath.Tpo"
+            ], 
+            "reads": [
+                "config.h", 
+                "getopt.h", 
+                "hash.h", 
+                "vpath.c", 
+                "filedef.h", 
+                "variable.h", 
+                "make.h", 
+                "gettext.h"
+            ], 
+            "children": []
+        }, 
+        "4982": {
+            "parent": "4892", 
+            "executable": "/usr/bin/gcc", 
+            "writes": [], 
+            "reads": [], 
+            "children": [
+                "4983", 
+                "4984"
+            ]
+        }, 
+        "4985": {
+            "parent": "4892", 
+            "executable": "/bin/mv", 
+            "writes": [
+                ".deps/vpath.Po"
+            ], 
+            "reads": [
+                ".deps/vpath.Tpo"
+            ], 
+            "children": []
+        }, 
+        "4984": {
+            "parent": "4982", 
+            "executable": "/usr/bin/as", 
+            "writes": [
+                "vpath.o"
+            ], 
+            "reads": [
+                "/tmp/ccCe3uvU.s", 
+                "vpath.o"
+            ], 
+            "children": []
+        }, 
+        "4987": {
+            "parent": "4986", 
+            "executable": "/usr/lib/gcc/x86_64-linux-gnu/4.6.1/cc1", 
+            "writes": [
+                ".deps/hash.Tpo", 
+                "/tmp/ccDEFiKh.s"
+            ], 
+            "reads": [
+                "config.h", 
+                "getopt.h", 
+                "hash.c", 
+                "hash.h", 
+                "make.h", 
+                "gettext.h"
+            ], 
+            "children": []
+        }, 
+        "4986": {
+            "parent": "4892", 
+            "executable": "/usr/bin/gcc", 
+            "writes": [], 
+            "reads": [], 
+            "children": [
+                "4987", 
+                "4988"
+            ]
+        }, 
+        "4989": {
+            "parent": "4892", 
+            "executable": "/bin/mv", 
+            "writes": [
+                ".deps/hash.Po"
+            ], 
+            "reads": [
+                ".deps/hash.Tpo"
+            ], 
+            "children": []
+        }, 
+        "4988": {
+            "parent": "4986", 
+            "executable": "/usr/bin/as", 
+            "writes": [
+                "hash.o"
+            ], 
+            "reads": [
+                "/tmp/ccDEFiKh.s", 
+                "hash.o"
+            ], 
+            "children": []
+        }, 
+        "4888": {
+            "parent": "4882", 
+            "executable": "/bin/bash", 
+            "writes": [], 
+            "reads": [], 
+            "children": [
+                "4889"
+            ]
+        }, 
+        "4889": {
+            "parent": "4888", 
+            "executable": "/usr/bin/make", 
+            "writes": [], 
+            "reads": [
+                "config/Makefile"
+            ], 
+            "children": []
+        }, 
+        "4881": {
+            "parent": "4879", 
+            "executable": "/usr/bin/make", 
+            "writes": [], 
+            "reads": [
+                ".deps/strcache.Po", 
+                ".deps/function.Po", 
+                ".deps/loadavg-getloadavg.Po", 
+                ".deps/arscan.Po", 
+                ".deps/job.Po", 
+                ".deps/remote-cstms.Po", 
+                ".deps/vmsjobs.Po", 
+                ".deps/remake.Po", 
+                ".deps/alloca.Po", 
+                ".deps/read.Po", 
+                ".deps/commands.Po", 
+                ".deps/signame.Po", 
+                ".deps/rule.Po", 
+                ".deps/implicit.Po", 
+                ".deps/default.Po", 
+                ".deps/getopt1.Po", 
+                ".deps/version.Po", 
+                ".deps/dir.Po", 
+                ".deps/variable.Po", 
+                "Makefile", 
+                ".deps/misc.Po", 
+                ".deps/ar.Po", 
+                ".deps/file.Po", 
+                ".deps/hash.Po", 
+                ".deps/main.Po", 
+                ".deps/getopt.Po", 
+                ".deps/expand.Po", 
+                ".deps/getloadavg.Po", 
+                ".deps/vpath.Po", 
+                ".deps/remote-stub.Po"
+            ], 
+            "children": [
+                "4882"
+            ]
+        }, 
+        "4882": {
+            "parent": "4881", 
+            "executable": "/bin/bash", 
+            "writes": [], 
+            "reads": [], 
+            "children": [
+                "4886", 
+                "4888", 
+                "4890", 
+                "4892"
+            ]
+        }, 
+        "4886": {
+            "parent": "4882", 
+            "executable": "/bin/bash", 
+            "writes": [], 
+            "reads": [], 
+            "children": [
+                "4887"
+            ]
+        }, 
+        "4887": {
+            "parent": "4886", 
+            "executable": "/usr/bin/make", 
+            "writes": [], 
+            "reads": [
+                "glob/Makefile", 
+                "glob/.deps/glob.Po", 
+                "glob/.deps/fnmatch.Po"
+            ], 
+            "children": []
+        }, 
+        "4879": {
+            "parent": null, 
+            "executable": "/usr/bin/make", 
+            "writes": [], 
+            "reads": [
+                ".deps/strcache.Po", 
+                ".deps/function.Po", 
+                ".deps/loadavg-getloadavg.Po", 
+                ".deps/arscan.Po", 
+                ".deps/job.Po", 
+                ".deps/remote-cstms.Po", 
+                ".deps/vmsjobs.Po", 
+                ".deps/remake.Po", 
+                ".deps/alloca.Po", 
+                ".deps/read.Po", 
+                ".deps/commands.Po", 
+                ".deps/signame.Po", 
+                ".deps/rule.Po", 
+                ".deps/implicit.Po", 
+                ".deps/default.Po", 
+                ".deps/getopt1.Po", 
+                ".deps/version.Po", 
+                ".deps/dir.Po", 
+                ".deps/variable.Po", 
+                "Makefile", 
+                ".deps/misc.Po", 
+                ".deps/ar.Po", 
+                ".deps/file.Po", 
+                ".deps/hash.Po", 
+                ".deps/main.Po", 
+                ".deps/getopt.Po", 
+                ".deps/expand.Po", 
+                ".deps/getloadavg.Po", 
+                ".deps/vpath.Po", 
+                ".deps/remote-stub.Po"
+            ], 
+            "children": [
+                "4881"
+            ]
+        }, 
+        "4978": {
+            "parent": "4892", 
+            "executable": "/usr/bin/gcc", 
+            "writes": [], 
+            "reads": [], 
+            "children": [
+                "4979", 
+                "4980"
+            ]
+        }, 
+        "4979": {
+            "parent": "4978", 
+            "executable": "/usr/lib/gcc/x86_64-linux-gnu/4.6.1/cc1", 
+            "writes": [
+                "/tmp/ccqtaZQP.s", 
+                ".deps/version.Tpo"
+            ], 
+            "reads": [
+                "config.h", 
+                "version.c"
+            ], 
+            "children": []
+        }, 
+        "4974": {
+            "parent": "4892", 
+            "executable": "/usr/bin/gcc", 
+            "writes": [], 
+            "reads": [], 
+            "children": [
+                "4975", 
+                "4976"
+            ]
+        }, 
+        "4975": {
+            "parent": "4974", 
+            "executable": "/usr/lib/gcc/x86_64-linux-gnu/4.6.1/cc1", 
+            "writes": [
+                "/tmp/cchr8JYs.s", 
+                ".deps/variable.Tpo"
+            ], 
+            "reads": [
+                "dep.h", 
+                "config.h", 
+                "commands.h", 
+                "getopt.h", 
+                "hash.h", 
+                "filedef.h", 
+                "variable.h", 
+                "variable.c", 
+                "make.h", 
+                "gettext.h", 
+                "rule.h", 
+                "job.h"
+            ], 
+            "children": []
+        }, 
+        "4976": {
+            "parent": "4974", 
+            "executable": "/usr/bin/as", 
+            "writes": [
+                "variable.o"
+            ], 
+            "reads": [
+                "/tmp/cchr8JYs.s", 
+                "variable.o"
+            ], 
+            "children": []
+        }, 
+        "4977": {
+            "parent": "4892", 
+            "executable": "/bin/mv", 
+            "writes": [
+                ".deps/variable.Po"
+            ], 
+            "reads": [
+                ".deps/variable.Tpo"
+            ], 
+            "children": []
+        }, 
+        "4970": {
+            "parent": "4892", 
+            "executable": "/usr/bin/gcc", 
+            "writes": [], 
+            "reads": [], 
+            "children": [
+                "4971", 
+                "4972"
+            ]
+        }, 
+        "4971": {
+            "parent": "4970", 
+            "executable": "/usr/lib/gcc/x86_64-linux-gnu/4.6.1/cc1", 
+            "writes": [
+                ".deps/strcache.Tpo", 
+                "/tmp/ccbIkQ7e.s"
+            ], 
+            "reads": [
+                "config.h", 
+                "getopt.h", 
+                "hash.h", 
+                "make.h", 
+                "strcache.c", 
+                "gettext.h"
+            ], 
+            "children": []
+        }, 
+        "4972": {
+            "parent": "4970", 
+            "executable": "/usr/bin/as", 
+            "writes": [
+                "strcache.o"
+            ], 
+            "reads": [
+                "/tmp/ccbIkQ7e.s", 
+                "strcache.o"
+            ], 
+            "children": []
+        }, 
+        "4973": {
+            "parent": "4892", 
+            "executable": "/bin/mv", 
+            "writes": [
+                ".deps/strcache.Po"
+            ], 
+            "reads": [
+                ".deps/strcache.Tpo"
+            ], 
+            "children": []
+        }, 
+        "4899": {
+            "parent": "4898", 
+            "executable": "/usr/lib/gcc/x86_64-linux-gnu/4.6.1/cc1", 
+            "writes": [
+                "/tmp/ccAjncOm.s", 
+                ".deps/arscan.Tpo"
+            ], 
+            "reads": [
+                "arscan.c", 
+                "config.h", 
+                "getopt.h", 
+                "make.h", 
+                "gettext.h"
+            ], 
+            "children": []
+        }, 
+        "4898": {
+            "parent": "4892", 
+            "executable": "/usr/bin/gcc", 
+            "writes": [], 
+            "reads": [], 
+            "children": [
+                "4899", 
+                "4900"
+            ]
+        }, 
+        "4892": {
+            "parent": "4882", 
+            "executable": "/usr/bin/make", 
+            "writes": [], 
+            "reads": [
+                ".deps/strcache.Po", 
+                ".deps/function.Po", 
+                ".deps/loadavg-getloadavg.Po", 
+                ".deps/arscan.Po", 
+                ".deps/job.Po", 
+                ".deps/remote-cstms.Po", 
+                ".deps/vmsjobs.Po", 
+                ".deps/remake.Po", 
+                ".deps/alloca.Po", 
+                ".deps/read.Po", 
+                ".deps/commands.Po", 
+                ".deps/signame.Po", 
+                ".deps/rule.Po", 
+                ".deps/implicit.Po", 
+                ".deps/default.Po", 
+                ".deps/getopt1.Po", 
+                ".deps/version.Po", 
+                ".deps/dir.Po", 
+                ".deps/variable.Po", 
+                "Makefile", 
+                ".deps/misc.Po", 
+                ".deps/ar.Po", 
+                ".deps/file.Po", 
+                ".deps/hash.Po", 
+                ".deps/main.Po", 
+                ".deps/getopt.Po", 
+                ".deps/expand.Po", 
+                ".deps/getloadavg.Po", 
+                ".deps/vpath.Po", 
+                ".deps/remote-stub.Po"
+            ], 
+            "children": [
+                "4894", 
+                "4897", 
+                "4898", 
+                "4901", 
+                "4902", 
+                "4905", 
+                "4906", 
+                "4909", 
+                "4910", 
+                "4913", 
+                "4914", 
+                "4917", 
+                "4918", 
+                "4921", 
+                "4922", 
+                "4925", 
+                "4926", 
+                "4929", 
+                "4930", 
+                "4933", 
+                "4934", 
+                "4937", 
+                "4938", 
+                "4941", 
+                "4942", 
+                "4945", 
+                "4946", 
+                "4949", 
+                "4950", 
+                "4953", 
+                "4954", 
+                "4957", 
+                "4958", 
+                "4961", 
+                "4962", 
+                "4965", 
+                "4966", 
+                "4969", 
+                "4970", 
+                "4973", 
+                "4974", 
+                "4977", 
+                "4978", 
+                "4981", 
+                "4982", 
+                "4985", 
+                "4986", 
+                "4989", 
+                "4991"
+            ]
+        }, 
+        "4891": {
+            "parent": "4890", 
+            "executable": "/usr/bin/make", 
+            "writes": [], 
+            "reads": [
+                "po/Makefile"
+            ], 
+            "children": []
+        }, 
+        "4890": {
+            "parent": "4882", 
+            "executable": "/bin/bash", 
+            "writes": [], 
+            "reads": [], 
+            "children": [
+                "4891"
+            ]
+        }, 
+        "4897": {
+            "parent": "4892", 
+            "executable": "/bin/mv", 
+            "writes": [
+                ".deps/ar.Po"
+            ], 
+            "reads": [
+                ".deps/ar.Tpo"
+            ], 
+            "children": []
+        }, 
+        "4896": {
+            "parent": "4894", 
+            "executable": "/usr/bin/as", 
+            "writes": [
+                "ar.o"
+            ], 
+            "reads": [
+                "ar.o", 
+                "/tmp/ccCLpjV4.s"
+            ], 
+            "children": []
+        }, 
+        "4895": {
+            "parent": "4894", 
+            "executable": "/usr/lib/gcc/x86_64-linux-gnu/4.6.1/cc1", 
+            "writes": [
+                "/tmp/ccCLpjV4.s", 
+                ".deps/ar.Tpo"
+            ], 
+            "reads": [
+                "dep.h", 
+                "config.h", 
+                "getopt.h", 
+                "hash.h", 
+                "filedef.h", 
+                "make.h", 
+                "gettext.h", 
+                "ar.c"
+            ], 
+            "children": []
+        }, 
+        "4894": {
+            "parent": "4892", 
+            "executable": "/usr/bin/gcc", 
+            "writes": [], 
+            "reads": [], 
+            "children": [
+                "4895", 
+                "4896"
+            ]
+        }, 
+        "4969": {
+            "parent": "4892", 
+            "executable": "/bin/mv", 
+            "writes": [
+                ".deps/signame.Po"
+            ], 
+            "reads": [
+                ".deps/signame.Tpo"
+            ], 
+            "children": []
+        }, 
+        "4968": {
+            "parent": "4966", 
+            "executable": "/usr/bin/as", 
+            "writes": [
+                "signame.o"
+            ], 
+            "reads": [
+                "/tmp/ccNogxg2.s", 
+                "signame.o"
+            ], 
+            "children": []
+        }, 
+        "4967": {
+            "parent": "4966", 
+            "executable": "/usr/lib/gcc/x86_64-linux-gnu/4.6.1/cc1", 
+            "writes": [
+                ".deps/signame.Tpo", 
+                "/tmp/ccNogxg2.s"
+            ], 
+            "reads": [
+                "config.h", 
+                "getopt.h", 
+                "make.h", 
+                "signame.c", 
+                "gettext.h"
+            ], 
+            "children": []
+        }, 
+        "4966": {
+            "parent": "4892", 
+            "executable": "/usr/bin/gcc", 
+            "writes": [], 
+            "reads": [], 
+            "children": [
+                "4967", 
+                "4968"
+            ]
+        }, 
+        "4965": {
+            "parent": "4892", 
+            "executable": "/bin/mv", 
+            "writes": [
+                ".deps/rule.Po"
+            ], 
+            "reads": [
+                ".deps/rule.Tpo"
+            ], 
+            "children": []
+        }, 
+        "4964": {
+            "parent": "4962", 
+            "executable": "/usr/bin/as", 
+            "writes": [
+                "rule.o"
+            ], 
+            "reads": [
+                "rule.o", 
+                "/tmp/ccNsaINC.s"
+            ], 
+            "children": []
+        }, 
+        "4963": {
+            "parent": "4962", 
+            "executable": "/usr/lib/gcc/x86_64-linux-gnu/4.6.1/cc1", 
+            "writes": [
+                "/tmp/ccNsaINC.s", 
+                ".deps/rule.Tpo"
+            ], 
+            "reads": [
+                "dep.h", 
+                "config.h", 
+                "commands.h", 
+                "getopt.h", 
+                "hash.h", 
+                "filedef.h", 
+                "variable.h", 
+                "make.h", 
+                "gettext.h", 
+                "rule.c", 
+                "rule.h", 
+                "job.h"
+            ], 
+            "children": []
+        }, 
+        "4962": {
+            "parent": "4892", 
+            "executable": "/usr/bin/gcc", 
+            "writes": [], 
+            "reads": [], 
+            "children": [
+                "4963", 
+                "4964"
+            ]
+        }, 
+        "4961": {
+            "parent": "4892", 
+            "executable": "/bin/mv", 
+            "writes": [
+                ".deps/remote-stub.Po"
+            ], 
+            "reads": [
+                ".deps/remote-stub.Tpo"
+            ], 
+            "children": []
+        }, 
+        "4960": {
+            "parent": "4958", 
+            "executable": "/usr/bin/as", 
+            "writes": [
+                "remote-stub.o"
+            ], 
+            "reads": [
+                "/tmp/cc5q5ldr.s", 
+                "remote-stub.o"
+            ], 
+            "children": []
+        }, 
+        "4958": {
+            "parent": "4892", 
+            "executable": "/usr/bin/gcc", 
+            "writes": [], 
+            "reads": [], 
+            "children": [
+                "4959", 
+                "4960"
+            ]
+        }, 
+        "4959": {
+            "parent": "4958", 
+            "executable": "/usr/lib/gcc/x86_64-linux-gnu/4.6.1/cc1", 
+            "writes": [
+                ".deps/remote-stub.Tpo", 
+                "/tmp/cc5q5ldr.s"
+            ], 
+            "reads": [
+                "config.h", 
+                "commands.h", 
+                "getopt.h", 
+                "hash.h", 
+                "remote-stub.c", 
+                "filedef.h", 
+                "make.h", 
+                "gettext.h", 
+                "job.h"
+            ], 
+            "children": []
+        }, 
+        "4952": {
+            "parent": "4950", 
+            "executable": "/usr/bin/as", 
+            "writes": [
+                "read.o"
+            ], 
+            "reads": [
+                "read.o", 
+                "/tmp/ccW3QvB3.s"
+            ], 
+            "children": []
+        }, 
+        "4953": {
+            "parent": "4892", 
+            "executable": "/bin/mv", 
+            "writes": [
+                ".deps/read.Po"
+            ], 
+            "reads": [
+                ".deps/read.Tpo"
+            ], 
+            "children": []
+        }, 
+        "4950": {
+            "parent": "4892", 
+            "executable": "/usr/bin/gcc", 
+            "writes": [], 
+            "reads": [], 
+            "children": [
+                "4951", 
+                "4952"
+            ]
+        }, 
+        "4951": {
+            "parent": "4950", 
+            "executable": "/usr/lib/gcc/x86_64-linux-gnu/4.6.1/cc1", 
+            "writes": [
+                ".deps/read.Tpo", 
+                "/tmp/ccW3QvB3.s"
+            ], 
+            "reads": [
+                "dep.h", 
+                "config.h", 
+                "commands.h", 
+                "getopt.h", 
+                "hash.h", 
+                "filedef.h", 
+                "variable.h", 
+                "make.h", 
+                "gettext.h", 
+                "rule.h", 
+                "job.h", 
+                "debug.h", 
+                "read.c"
+            ], 
+            "children": []
+        }, 
+        "4956": {
+            "parent": "4954", 
+            "executable": "/usr/bin/as", 
+            "writes": [
+                "remake.o"
+            ], 
+            "reads": [
+                "remake.o", 
+                "/tmp/ccpEXx0S.s"
+            ], 
+            "children": []
+        }, 
+        "4957": {
+            "parent": "4892", 
+            "executable": "/bin/mv", 
+            "writes": [
+                ".deps/remake.Po"
+            ], 
+            "reads": [
+                ".deps/remake.Tpo"
+            ], 
+            "children": []
+        }, 
+        "4954": {
+            "parent": "4892", 
+            "executable": "/usr/bin/gcc", 
+            "writes": [], 
+            "reads": [], 
+            "children": [
+                "4955", 
+                "4956"
+            ]
+        }, 
+        "4955": {
+            "parent": "4954", 
+            "executable": "/usr/lib/gcc/x86_64-linux-gnu/4.6.1/cc1", 
+            "writes": [
+                ".deps/remake.Tpo", 
+                "/tmp/ccpEXx0S.s"
+            ], 
+            "reads": [
+                "dep.h", 
+                "config.h", 
+                "commands.h", 
+                "getopt.h", 
+                "hash.h", 
+                "remake.c", 
+                "filedef.h", 
+                "variable.h", 
+                "make.h", 
+                "gettext.h", 
+                "job.h", 
+                "debug.h"
+            ], 
+            "children": []
+        }, 
+        "4945": {
+            "parent": "4892", 
+            "executable": "/bin/mv", 
+            "writes": [
+                ".deps/main.Po"
+            ], 
+            "reads": [
+                ".deps/main.Tpo"
+            ], 
+            "children": []
+        }, 
+        "4944": {
+            "parent": "4942", 
+            "executable": "/usr/bin/as", 
+            "writes": [
+                "main.o"
+            ], 
+            "reads": [
+                "/tmp/ccqDrNs6.s", 
+                "main.o"
+            ], 
+            "children": []
+        }, 
+        "4947": {
+            "parent": "4946", 
+            "executable": "/usr/lib/gcc/x86_64-linux-gnu/4.6.1/cc1", 
+            "writes": [
+                ".deps/misc.Tpo", 
+                "/tmp/ccFpX6JF.s"
+            ], 
+            "reads": [
+                "dep.h", 
+                "config.h", 
+                "getopt.h", 
+                "misc.c", 
+                "make.h", 
+                "gettext.h", 
+                "debug.h"
+            ], 
+            "children": []
+        }, 
+        "4946": {
+            "parent": "4892", 
+            "executable": "/usr/bin/gcc", 
+            "writes": [], 
+            "reads": [], 
+            "children": [
+                "4947", 
+                "4948"
+            ]
+        }, 
+        "4941": {
+            "parent": "4892", 
+            "executable": "/bin/mv", 
+            "writes": [
+                ".deps/job.Po"
+            ], 
+            "reads": [
+                ".deps/job.Tpo"
+            ], 
+            "children": []
+        }, 
+        "4940": {
+            "parent": "4938", 
+            "executable": "/usr/bin/as", 
+            "writes": [
+                "job.o"
+            ], 
+            "reads": [
+                "/tmp/ccChoAKw.s", 
+                "job.o"
+            ], 
+            "children": []
+        }, 
+        "4943": {
+            "parent": "4942", 
+            "executable": "/usr/lib/gcc/x86_64-linux-gnu/4.6.1/cc1", 
+            "writes": [
+                "/tmp/ccqDrNs6.s", 
+                ".deps/main.Tpo"
+            ], 
+            "reads": [
+                "dep.h", 
+                "config.h", 
+                "commands.h", 
+                "getopt.h", 
+                "hash.h", 
+                "filedef.h", 
+                "variable.h", 
+                "make.h", 
+                "gettext.h", 
+                "main.c", 
+                "rule.h", 
+                "job.h", 
+                "debug.h"
+            ], 
+            "children": []
+        }, 
+        "4942": {
+            "parent": "4892", 
+            "executable": "/usr/bin/gcc", 
+            "writes": [], 
+            "reads": [], 
+            "children": [
+                "4943", 
+                "4944"
+            ]
+        }, 
+        "4949": {
+            "parent": "4892", 
+            "executable": "/bin/mv", 
+            "writes": [
+                ".deps/misc.Po"
+            ], 
+            "reads": [
+                ".deps/misc.Tpo"
+            ], 
+            "children": []
+        }, 
+        "4948": {
+            "parent": "4946", 
+            "executable": "/usr/bin/as", 
+            "writes": [
+                "misc.o"
+            ], 
+            "reads": [
+                "/tmp/ccFpX6JF.s", 
+                "misc.o"
+            ], 
+            "children": []
+        }, 
+        "4930": {
+            "parent": "4892", 
+            "executable": "/usr/bin/gcc", 
+            "writes": [], 
+            "reads": [], 
+            "children": [
+                "4931", 
+                "4932"
+            ]
+        }, 
+        "4931": {
+            "parent": "4930", 
+            "executable": "/usr/lib/gcc/x86_64-linux-gnu/4.6.1/cc1", 
+            "writes": [
+                "/tmp/ccJrocl3.s", 
+                ".deps/getopt1.Tpo"
+            ], 
+            "reads": [
+                "getopt.h", 
+                "getopt1.c", 
+                "config.h"
+            ], 
+            "children": []
+        }, 
+        "4932": {
+            "parent": "4930", 
+            "executable": "/usr/bin/as", 
+            "writes": [
+                "getopt1.o"
+            ], 
+            "reads": [
+                "/tmp/ccJrocl3.s", 
+                "getopt1.o"
+            ], 
+            "children": []
+        }, 
+        "4933": {
+            "parent": "4892", 
+            "executable": "/bin/mv", 
+            "writes": [
+                ".deps/getopt1.Po"
+            ], 
+            "reads": [
+                ".deps/getopt1.Tpo"
+            ], 
+            "children": []
+        }, 
+        "4934": {
+            "parent": "4892", 
+            "executable": "/usr/bin/gcc", 
+            "writes": [], 
+            "reads": [], 
+            "children": [
+                "4935", 
+                "4936"
+            ]
+        }, 
+        "4935": {
+            "parent": "4934", 
+            "executable": "/usr/lib/gcc/x86_64-linux-gnu/4.6.1/cc1", 
+            "writes": [
+                ".deps/implicit.Tpo", 
+                "/tmp/cclBUd7a.s"
+            ], 
+            "reads": [
+                "dep.h", 
+                "config.h", 
+                "commands.h", 
+                "getopt.h", 
+                "hash.h", 
+                "filedef.h", 
+                "variable.h", 
+                "make.h", 
+                "gettext.h", 
+                "rule.h", 
+                "job.h", 
+                "debug.h", 
+                "implicit.c"
+            ], 
+            "children": []
+        }, 
+        "4936": {
+            "parent": "4934", 
+            "executable": "/usr/bin/as", 
+            "writes": [
+                "implicit.o"
+            ], 
+            "reads": [
+                "implicit.o", 
+                "/tmp/cclBUd7a.s"
+            ], 
+            "children": []
+        }, 
+        "4937": {
+            "parent": "4892", 
+            "executable": "/bin/mv", 
+            "writes": [
+                ".deps/implicit.Po"
+            ], 
+            "reads": [
+                ".deps/implicit.Tpo"
+            ], 
+            "children": []
+        }, 
+        "4938": {
+            "parent": "4892", 
+            "executable": "/usr/bin/gcc", 
+            "writes": [], 
+            "reads": [], 
+            "children": [
+                "4939", 
+                "4940"
+            ]
+        }, 
+        "4939": {
+            "parent": "4938", 
+            "executable": "/usr/lib/gcc/x86_64-linux-gnu/4.6.1/cc1", 
+            "writes": [
+                "/tmp/ccChoAKw.s", 
+                ".deps/job.Tpo"
+            ], 
+            "reads": [
+                "config.h", 
+                "commands.h", 
+                "getopt.h", 
+                "hash.h", 
+                "filedef.h", 
+                "variable.h", 
+                "make.h", 
+                "gettext.h", 
+                "job.c", 
+                "job.h", 
+                "debug.h"
+            ], 
+            "children": []
+        }, 
+        "4923": {
+            "parent": "4922", 
+            "executable": "/usr/lib/gcc/x86_64-linux-gnu/4.6.1/cc1", 
+            "writes": [
+                "/tmp/cculdhfb.s", 
+                ".deps/function.Tpo"
+            ], 
+            "reads": [
+                "dep.h", 
+                "config.h", 
+                "function.c", 
+                "commands.h", 
+                "getopt.h", 
+                "hash.h", 
+                "filedef.h", 
+                "variable.h", 
+                "make.h", 
+                "gettext.h", 
+                "job.h", 
+                "debug.h"
+            ], 
+            "children": []
+        }, 
+        "4922": {
+            "parent": "4892", 
+            "executable": "/usr/bin/gcc", 
+            "writes": [], 
+            "reads": [], 
+            "children": [
+                "4923", 
+                "4924"
+            ]
+        }, 
+        "4921": {
+            "parent": "4892", 
+            "executable": "/bin/mv", 
+            "writes": [
+                ".deps/file.Po"
+            ], 
+            "reads": [
+                ".deps/file.Tpo"
+            ], 
+            "children": []
+        }, 
+        "4920": {
+            "parent": "4918", 
+            "executable": "/usr/bin/as", 
+            "writes": [
+                "file.o"
+            ], 
+            "reads": [
+                "file.o", 
+                "/tmp/ccmBkcXS.s"
+            ], 
+            "children": []
+        }, 
+        "4927": {
+            "parent": "4926", 
+            "executable": "/usr/lib/gcc/x86_64-linux-gnu/4.6.1/cc1", 
+            "writes": [
+                ".deps/getopt.Tpo", 
+                "/tmp/ccdVeOUW.s"
+            ], 
+            "reads": [
+                "getopt.c", 
+                "config.h"
+            ], 
+            "children": []
+        }, 
+        "4926": {
+            "parent": "4892", 
+            "executable": "/usr/bin/gcc", 
+            "writes": [], 
+            "reads": [], 
+            "children": [
+                "4927", 
+                "4928"
+            ]
+        }, 
+        "4925": {
+            "parent": "4892", 
+            "executable": "/bin/mv", 
+            "writes": [
+                ".deps/function.Po"
+            ], 
+            "reads": [
+                ".deps/function.Tpo"
+            ], 
+            "children": []
+        }, 
+        "4924": {
+            "parent": "4922", 
+            "executable": "/usr/bin/as", 
+            "writes": [
+                "function.o"
+            ], 
+            "reads": [
+                "/tmp/cculdhfb.s", 
+                "function.o"
+            ], 
+            "children": []
+        }, 
+        "4929": {
+            "parent": "4892", 
+            "executable": "/bin/mv", 
+            "writes": [
+                ".deps/getopt.Po"
+            ], 
+            "reads": [
+                ".deps/getopt.Tpo"
+            ], 
+            "children": []
+        }, 
+        "4928": {
+            "parent": "4926", 
+            "executable": "/usr/bin/as", 
+            "writes": [
+                "getopt.o"
+            ], 
+            "reads": [
+                "/tmp/ccdVeOUW.s", 
+                "getopt.o"
+            ], 
+            "children": []
+        }, 
+        "4918": {
+            "parent": "4892", 
+            "executable": "/usr/bin/gcc", 
+            "writes": [], 
+            "reads": [], 
+            "children": [
+                "4919", 
+                "4920"
+            ]
+        }, 
+        "4919": {
+            "parent": "4918", 
+            "executable": "/usr/lib/gcc/x86_64-linux-gnu/4.6.1/cc1", 
+            "writes": [
+                "/tmp/ccmBkcXS.s", 
+                ".deps/file.Tpo"
+            ], 
+            "reads": [
+                "dep.h", 
+                "config.h", 
+                "commands.h", 
+                "getopt.h", 
+                "hash.h", 
+                "file.c", 
+                "filedef.h", 
+                "variable.h", 
+                "make.h", 
+                "gettext.h", 
+                "job.h", 
+                "debug.h"
+            ], 
+            "children": []
+        }, 
+        "4916": {
+            "parent": "4914", 
+            "executable": "/usr/bin/as", 
+            "writes": [
+                "expand.o"
+            ], 
+            "reads": [
+                "expand.o", 
+                "/tmp/ccnmVoVw.s"
+            ], 
+            "children": []
+        }, 
+        "4917": {
+            "parent": "4892", 
+            "executable": "/bin/mv", 
+            "writes": [
+                ".deps/expand.Po"
+            ], 
+            "reads": [
+                ".deps/expand.Tpo"
+            ], 
+            "children": []
+        }, 
+        "4914": {
+            "parent": "4892", 
+            "executable": "/usr/bin/gcc", 
+            "writes": [], 
+            "reads": [], 
+            "children": [
+                "4915", 
+                "4916"
+            ]
+        }, 
+        "4915": {
+            "parent": "4914", 
+            "executable": "/usr/lib/gcc/x86_64-linux-gnu/4.6.1/cc1", 
+            "writes": [
+                "/tmp/ccnmVoVw.s", 
+                ".deps/expand.Tpo"
+            ], 
+            "reads": [
+                "config.h", 
+                "commands.h", 
+                "getopt.h", 
+                "hash.h", 
+                "filedef.h", 
+                "variable.h", 
+                "make.h", 
+                "gettext.h", 
+                "rule.h", 
+                "job.h", 
+                "expand.c"
+            ], 
+            "children": []
+        }, 
+        "4912": {
+            "parent": "4910", 
+            "executable": "/usr/bin/as", 
+            "writes": [
+                "dir.o"
+            ], 
+            "reads": [
+                "dir.o", 
+                "/tmp/ccK3qla7.s"
+            ], 
+            "children": []
+        }, 
+        "4913": {
+            "parent": "4892", 
+            "executable": "/bin/mv", 
+            "writes": [
+                ".deps/dir.Po"
+            ], 
+            "reads": [
+                ".deps/dir.Tpo"
+            ], 
+            "children": []
+        }, 
+        "4910": {
+            "parent": "4892", 
+            "executable": "/usr/bin/gcc", 
+            "writes": [], 
+            "reads": [], 
+            "children": [
+                "4911", 
+                "4912"
+            ]
+        }, 
+        "4911": {
+            "parent": "4910", 
+            "executable": "/usr/lib/gcc/x86_64-linux-gnu/4.6.1/cc1", 
+            "writes": [
+                "/tmp/ccK3qla7.s", 
+                ".deps/dir.Tpo"
+            ], 
+            "reads": [
+                "dir.c", 
+                "config.h", 
+                "getopt.h", 
+                "hash.h", 
+                "make.h", 
+                "gettext.h"
+            ], 
+            "children": []
+        }, 
+        "4992": {
+            "parent": "4991", 
+            "executable": "/usr/lib/gcc/x86_64-linux-gnu/4.6.1/collect2", 
+            "writes": [], 
+            "reads": [
+                "/tmp/ccc0P4s1.ld", 
+                "/tmp/ccoGTQ5i.le"
+            ], 
+            "children": [
+                "4993"
+            ]
+        }, 
+        "4993": {
+            "parent": "4992", 
+            "executable": "/usr/bin/ld", 
+            "writes": [
+                "make"
+            ], 
+            "reads": [
+                "arscan.o", 
+                "expand.o", 
+                "dir.o", 
+                "getopt.o", 
+                "default.o", 
+                "getopt1.o", 
+                "vpath.o", 
+                "implicit.o", 
+                "function.o", 
+                "remote-stub.o", 
+                "commands.o", 
+                "version.o", 
+                "ar.o", 
+                "file.o", 
+                "read.o", 
+                "misc.o", 
+                "rule.o", 
+                "strcache.o", 
+                "signame.o", 
+                "make", 
+                "remake.o", 
+                "variable.o", 
+                "main.o", 
+                "job.o", 
+                "hash.o"
+            ], 
+            "children": []
+        }, 
+        "4991": {
+            "parent": "4892", 
+            "executable": "/usr/bin/gcc", 
+            "writes": [], 
+            "reads": [], 
+            "children": [
+                "4992"
+            ]
+        }
+    }
+}
