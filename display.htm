@@ -103,9 +103,22 @@
               return $.getUrlVars()[name];
             }
           });
+          var delay = (function(){
+            var timer = 0;
+            return function(callback, ms){
+              clearTimeout (timer);
+              console.log("cleared");
+              timer = setTimeout(callback, ms);
+            };
+          })();
           $(document).ready(function() {
             $.get($.getUrlVar('js'), loadJson);
-            $("#search-text").keyup(search);
+            $("#search-text").keyup(function() {
+                delay(function() {
+                  search();
+                  console.log("run search");
+                }, 200);
+            });
             $("#sp").click(function() {
                 switchView(true);
             });
@@ -115,11 +128,12 @@
           });
           var processes = {};
           var reads = {};
+          var read_bys = {}; 
           var writes = {};
           var writers = {};
           var start = null;
           function search() {
-            var text = $(this).val();
+            var text = $("#search-text").val();
             var $results = $("#search-results ul");
             $results.empty();
 
@@ -170,7 +184,9 @@
                 r = processes[p].reads[r];
                 if(typeof reads[r] === "undefined") {
                   reads[r] = []
+                  read_bys[r] = [];
                 }
+                read_bys[r].push(p);
                 for ( var w in processes[p].writes) {
                   w = processes[p].writes[w];
                   reads[r].push(w);
@@ -189,6 +205,15 @@
           }
           function loadProcess(id, par) {
             switchView(true);
+
+            if(par && id == null) {
+              $("#prev-process").children().hide().append($('<h2 class="none">No Parent</h2>'));
+              $("#prev-process").append($('<h3 class="none">None</h3>'));
+              return;
+            } else {
+              $("#prev-process .none").remove();
+              $("#prev-process").children().show();
+            }
 
             var div = (par) ? "#prev-process" : "#process";
             var p = processes[id];
@@ -272,6 +297,14 @@
                 li.addClass("label");
                 li.children().html(reads[file][r]).click(function(){
                   loadFile($(this).text());
+                });
+                $("#file-view #reads ul").append(li);
+            }
+            for(var r in read_bys[file]) {
+                var li = $('<li><a href="#"></a></li>');
+                li.addClass("label label-warning");
+                li.children().html(read_bys[file][r]).click(function(){
+                  loadProcess($(this).text(), false);
                 });
                 $("#file-view #reads ul").append(li);
             }
