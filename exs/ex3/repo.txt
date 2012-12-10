@@ -1,0 +1,2 @@
+git://github.com/joyent/node.git
+24184345688e1f545ffc87e5742de06ed9855007
