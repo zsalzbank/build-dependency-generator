@@ -15,6 +15,7 @@ re_result = re.compile('(?P<result>-?\d*)')
 re_execve = re.compile('execve\("(?P<process>.*?)", (?P<args>\[.*\]),')
 re_access = re.compile('access\("(?P<file>.*?)"')
 re_open = re.compile('open\("(?P<file>.*?)"')
+re_openat = re.compile('openat\((?P<fd>.*?), "(?P<file>.*?)"')
 re_read = re.compile('read\((?P<fd>\d*),')
 re_rename = re.compile('rename\("(?P<fn1>.*?)", "(?P<fn2>.*?)"\)')
 re_pipe = re.compile('pipe\(\[(?P<fd1>\d*), (?P<fd2>\d*)')
@@ -44,7 +45,7 @@ def parse_line ( pid, line ) :
   global processes
 
   # are we starting an executable
-  if line.startswith('execve') :
+  if line.startswith('execve(') :
     m = re_execve.match(line)
 
     # did it run succesfully?
@@ -58,7 +59,7 @@ def parse_line ( pid, line ) :
           processes[pid].add_arg("<unreadable>")
 
   # are we accessing a file?
-  elif accesses and line.startswith('access') :
+  elif accesses and line.startswith('access(') :
     m = re_access.match(line)
     result = get_result(line)
 
@@ -66,7 +67,7 @@ def parse_line ( pid, line ) :
       processes[pid].add_access(m.group('file'))
 
   # are we opening a file?
-  elif line.startswith('open'):
+  elif line.startswith('open('):
     m = re_open.match(line)
     fd = get_result(line)
 
@@ -76,6 +77,15 @@ def parse_line ( pid, line ) :
       if 'O_CREAT' in line :
         processes[pid].add_write(processes[pid].get_file(fd))
       
+  elif line.startswith('openat('):
+    m = re_openat.match(line)
+    fd = get_result(line)
+
+    if fd >= 0 :
+      processes[pid].add_fd(fd, m.group('file'))
+      processes[pid].add_access(m.group('file'))
+      if 'O_CREAT' in line :
+        processes[pid].add_write(processes[pid].get_file(fd))
 
   # are we reading a file?
   elif line.startswith('read(') :
@@ -88,7 +98,7 @@ def parse_line ( pid, line ) :
       processes[pid].add_read(fname)
 
   # are we moving a file?
-  elif line.startswith('rename') :
+  elif line.startswith('rename(') :
     m = re_rename.match(line)
     processes[pid].add_access(m.group('fn1'))
     processes[pid].add_access(m.group('fn2'))
@@ -98,7 +108,7 @@ def parse_line ( pid, line ) :
       processes[pid].add_write(m.group('fn2'))
 
   # are we creating a pipe
-  elif line.startswith('pipe') :
+  elif line.startswith('pipe(') :
     m = re_pipe.match(line)
     fd1 = int(m.group('fd1'))
     fd2 = int(m.group('fd2'))
@@ -107,7 +117,7 @@ def parse_line ( pid, line ) :
     processes[pid].add_fd(fd2, '<PIPE>')
 
   # are we duplicating an fd
-  elif line.startswith('dup2') :
+  elif line.startswith('dup2(') :
     m = re_dup2.match(line)
     fd1 = int(m.group('fd1'))
     fd2 = int(m.group('fd2'))
@@ -115,7 +125,7 @@ def parse_line ( pid, line ) :
     processes[pid].add_fd(fd2, processes[pid].get_file(fd1))
 
   # are we duplicating an fd
-  elif line.startswith('dup') :
+  elif line.startswith('dup(') :
     m = re_dup.match(line)
     fd1 = int(m.group('fd1'))
     fd2 = get_result(line)
@@ -123,7 +133,7 @@ def parse_line ( pid, line ) :
     processes[pid].add_fd(fd2, processes[pid].get_file(fd1))
 
   # are we using fcntl
-  elif line.startswith('fcntl') :
+  elif line.startswith('fcntl(') :
     m = re_fcntl.match(line)
     if m is not None :
       command = m.group('command')
@@ -134,7 +144,7 @@ def parse_line ( pid, line ) :
         processes[pid].add_fd(fd2, processes[pid].get_file(fd1))
 
   # are we writing a file?
-  elif line.startswith('write') :
+  elif line.startswith('write(') :
     m = re_write.match(line)
     fd = int(m.group('fd'))
     result = get_result(line)
@@ -143,7 +153,7 @@ def parse_line ( pid, line ) :
       processes[pid].add_write(processes[pid].get_file(fd))
 
   # are we closing a file?
-  elif line.startswith('close') :
+  elif line.startswith('close(') :
     m = re_close.match(line)
     fd = int(m.group('fd'))
     result = get_result(line)
@@ -152,21 +162,21 @@ def parse_line ( pid, line ) :
       processes[pid].close_fd(fd)
 
   # are we cloning this process?
-  elif line.startswith('clone') :
+  elif line.startswith('clone(') :
     npid = get_result(line)
 
     processes[npid] = processes[pid].clone(npid, pid)
     processes[pid].add_child(npid)
 
   # are we forking this process?
-  elif line.startswith('vfork') :
+  elif line.startswith('vfork(') :
     npid = get_result(line)
 
     processes[npid] = processes[pid].clone(npid, pid)
     processes[pid].add_child(npid)
 
   # are we changing directories?
-  elif line.startswith('chdir') :
+  elif line.startswith('chdir(') :
     m = re_chdir.match(line)
     ch = m.group('dir')
     result = get_result(line)
@@ -227,4 +237,5 @@ if __name__ == '__main__' :
     print 'Usage:', sys.argv[0], 'input-file'
     sys.exit()
 
+  sys.setrecursionlimit(10000)
   parse_file(sys.argv[1])
