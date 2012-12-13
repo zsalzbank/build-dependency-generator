@@ -45,9 +45,15 @@
         </div>
         <div id="file-view" class="hide">
             <div class="row-fluid">
-                <div id="writes" class="well span4">
-                    <h2>Dependent On</h2>
-                    <ul class="unstyled"></ul>
+                <div id="left" class="span4">
+                    <div id="writes" class="well">
+                        <h2>Dependent On</h2>
+                        <ul class="unstyled"></ul>
+                    </div>
+                    <div id="sdo" class="well">
+                        <h2>Should Depend On</h2>
+                        <ul class="unstyled"></ul>
+                    </div>
                 </div>
                 <div id="file" class="well span4">
                     <h2>File</h2>
@@ -116,6 +122,7 @@
           })();
           $(document).ready(function() {
             $.get($.getUrlVar('js'), loadJson);
+            $.get($.getUrlVar('rules'), loadRules);
             $("#search-text").keyup(function() {
                 delay(function() {
                   search();
@@ -134,6 +141,10 @@
           var writes = {};
           var writers = {};
           var start = null;
+          var rules = {};
+          function loadRules(data) {
+            rules = data;
+          }
           function search() {
             var text = $("#search-text").val();
             var $results = $("#search-results ul");
@@ -277,6 +288,7 @@
             
             $("#file-view #writes ul").empty();
             $("#file-view #reads ul").empty();
+            $("#file-view #sdo ul").empty();
 
             $("#file h3 a").html(file);
             if(writers[file]) {
@@ -294,7 +306,27 @@
                 li.children().html(writes[file][w]).click(function(){
                   loadFile($(this).text());
                 });
+
+                if($.inArray(writes[file][w], rules[file]) >= 0) {
+                  li.addClass("label-success");
+                } else {
+                  li.addClass("label-important");
+                }
                 $("#file-view #writes ul").append(li);
+            }
+
+            for(var r in rules[file]) {
+                var li = $('<li><a href="#"></a></li>');
+                li.addClass("label");
+                li.children().html(rules[file][r]).click(function(){
+                  loadFile($(this).text());
+                });
+                if($.inArray(rules[file][r], writes[file]) >= 0) {
+                  li.addClass("label-success");
+                } else {
+                  li.addClass("label-important");
+                }
+                $("#file-view #sdo ul").append(li);
             }
     
             for(var r in reads[file]) {
@@ -316,6 +348,7 @@
 
             checkEmpty("#file-view #writes ul");
             checkEmpty("#file-view #reads ul");
+            checkEmpty("#file-view #sdo ul");
           }
 
          function checkEmpty(div) {
