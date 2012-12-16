@@ -1,6 +1,7 @@
 import os
 import json
 
+# a process contains all the information about a build process
 class Process :
   def __init__ (self, pid) :
     self.executable = ''
@@ -15,6 +16,8 @@ class Process :
     self.parent = None
     self.cwd = None
 
+  # copy the process and any data that would get copied in
+  #   a real world clone or fork of a process
   def clone(self, p, parent) :
     p = Process(p)
 
@@ -34,6 +37,8 @@ class Process :
     fo = self.getpath(f)
     return fo
 
+  # return the path based on the current working directory of the
+  #   process if the file is not absolute to begin with
   def getpath(self, p) :
     if p[0] == '/' :
       return os.path.abspath(p)
@@ -77,6 +82,9 @@ class Process :
 
   def get_unfinished (self) :
     return self.unfinished
+
+  # only add writes and reads if they are not to special file
+  #   names (like pipes)
 
   def add_write (self, w) :
     if w[0] != '<' and w[len(w)-1] != '>' :
