@@ -21,7 +21,7 @@ python -m SimpleHTTPServer &
 PID=$!
 
 # browse to the display page
-chromium-browser "http://localhost:8000/display.htm?js=tree.json&rules=rules.json" &
+xdg-open "http://localhost:8000/display.htm?js=tree.json&rules=rules.json" &
 
 # kill the server after a little while
 sleep 5
